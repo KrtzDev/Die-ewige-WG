@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class TimeObject : MonoBehaviour
 {
-    public List<PointInTime> pointsInTime = new List<PointInTime>();
-
-    public PointInTime currentPointInTime;
-
-    [Space(20)]
     [Header("References")]
     [SerializeField]
     private SpriteRenderer visuals;
     [SerializeField]
     private SpriteRenderer oldVisuals;
 
+    [Header("------------------------------------------------------------------------------------------")]
+    public PointInTime currentPointInTime;
+
+
     [Space(20)]
+    public List<PointInTime> pointsInTime = new List<PointInTime>();
+
+
+    [Header("------------------------------------------------------------------------------------------")]
     [Header("SnapshotData")]
     [SerializeField]
     private bool editMode;

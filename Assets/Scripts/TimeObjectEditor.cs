@@ -15,10 +15,6 @@ public class TimeObjectEditor : Editor
     {
         base.OnInspectorGUI();
 
-        EditorGUILayout.Space(20);
-        EditorGUILayout.LabelField("-------------------------------------------------------------------------");
-        EditorGUILayout.Space(20);
-
         if (GUILayout.Button("Take Snapshot"))
         {
             SnapshotData newSnapShotData = CreateInstance<SnapshotData>();
@@ -36,6 +32,9 @@ public class TimeObjectEditor : Editor
 
             thisTimeObject.pointsInTime.Add(newPointInTime);
         }
+
+        EditorGUILayout.LabelField("-------------------------------------------------------------------------");
+        EditorGUILayout.Space(20);
     }
 
     private void OnSceneGUI()
