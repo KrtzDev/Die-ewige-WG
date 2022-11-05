@@ -13,10 +13,8 @@ public class TimeObject : MonoBehaviour
     [Header("------------------------------------------------------------------------------------------")]
     public PointInTime currentPointInTime;
 
-
     [Space(20)]
     public List<PointInTime> pointsInTime = new List<PointInTime>();
-
 
     [Header("------------------------------------------------------------------------------------------")]
     [Header("SnapshotData")]
@@ -34,7 +32,6 @@ public class TimeObject : MonoBehaviour
     [SerializeField]
     public Vector3 SnapshotPosition;
 
-    [ExecuteInEditMode]
     private void OnValidate()
     {
         if (editMode)
