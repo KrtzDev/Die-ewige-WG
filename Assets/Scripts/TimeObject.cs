@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,18 +6,27 @@ public class TimeObject : MonoBehaviour
 {
     public List<PointInTime> pointsInTime = new List<PointInTime>();
 
+    [SerializeField]
     public PointInTime currentPointInTime;
 
-    [HideInInspector] public SpriteRenderer spriteRenderer;
+    [Space(20)]
+    [SerializeField]
+    private SpriteRenderer visuals;
+    [SerializeField]
+    private SpriteRenderer oldVisuals;
 
     private void OnValidate()
     {
-        pointsInTime = pointsInTime.OrderBy(point => point.timestamp).ToList();
+        if (pointsInTime.Count > 0)
+        {
+            pointsInTime = pointsInTime.OrderBy(point => point.timeStamp).ToList();
+        }
     }
 
     private void Awake()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        LeanTween.alpha(oldVisuals.gameObject, 0, 0);
+        LeanTween.alpha(visuals.gameObject, 1, 0);
 
         foreach (var point in pointsInTime)
         {
@@ -26,9 +34,9 @@ public class TimeObject : MonoBehaviour
             {
                 point.goalPosition = transform.position;
             }
-            if (point.isActiveAtTimestamp && !point.sprite)
+            if (point.isActiveAtTimeStamp && !point.sprite)
             {
-                point.sprite = spriteRenderer.sprite;
+                point.sprite = visuals.sprite;
             }
         }
 
@@ -40,8 +48,33 @@ public class TimeObject : MonoBehaviour
 
     public void UpdateTimeObject()
     {
-        spriteRenderer.sprite = currentPointInTime.sprite;
+        LeanTween.cancel(gameObject);
+        if (currentPointInTime.isActiveAtTimeStamp)
+        {
+            oldVisuals.sprite = visuals.sprite;
+            visuals.sprite = currentPointInTime.sprite;
 
-        transform.position = currentPointInTime.goalPosition;
+            oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 1);
+            LeanTween.alpha(oldVisuals.gameObject, 0, .2f);
+
+            visuals.color = new Color(visuals.color.r, visuals.color.g, visuals.color.b, 0);
+            LeanTween.alpha(visuals.gameObject, 1, .2f);
+        }
+        else
+        {
+            LeanTween.alpha(visuals.gameObject, 0, .2f);
+        }
+
+        LeanTween.move(gameObject, currentPointInTime.goalPosition, .5f);
+    }
+
+    public void Activate()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 }

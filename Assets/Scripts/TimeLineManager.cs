@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -36,15 +35,16 @@ namespace TESF
 
                 foreach (var point in timeObject.pointsInTime)
                 {
-                    if (!point.isActiveAtTimestamp) continue;
-                    if (timeSlider.value > point.timestamp)
+                    if (timeSlider.value > point.timeStamp)
                     {
                         pointToJumpTo = point;
                     }
                 }
-
-                timeObject.currentPointInTime = pointToJumpTo;
-                timeObject.UpdateTimeObject();
+                if (timeObject.currentPointInTime != pointToJumpTo)
+                {
+                    timeObject.currentPointInTime = pointToJumpTo;
+                    timeObject.UpdateTimeObject();
+                }
             }
         }
     }

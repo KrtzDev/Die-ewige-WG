@@ -3,8 +3,8 @@
 [System.Serializable]
 public class PointInTime
 {
-    public float timestamp;
-    public bool isActiveAtTimestamp = true;
+    public float timeStamp;
+    public bool isActiveAtTimeStamp = true;
     public Sprite sprite;
     public Vector3 goalPosition;
 }
