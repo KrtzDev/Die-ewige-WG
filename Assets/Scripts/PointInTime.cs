@@ -4,7 +4,11 @@
 public class PointInTime
 {
     public float timeStamp;
-    public bool isActiveAtTimeStamp = true;
-    public Sprite sprite;
-    public Vector3 goalPosition;
+    public SnapshotData snapshotData;
+
+    public PointInTime(float timestamp, SnapshotData snapshotData)
+    {
+        this.timeStamp = timestamp;
+        this.snapshotData = snapshotData;
+    }
 }

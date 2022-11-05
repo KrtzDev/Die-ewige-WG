@@ -6,17 +6,46 @@ public class TimeObject : MonoBehaviour
 {
     public List<PointInTime> pointsInTime = new List<PointInTime>();
 
-    [SerializeField]
     public PointInTime currentPointInTime;
 
     [Space(20)]
+    [Header("References")]
     [SerializeField]
     private SpriteRenderer visuals;
     [SerializeField]
     private SpriteRenderer oldVisuals;
 
+    [Space(20)]
+    [Header("SnapshotData")]
+    [SerializeField]
+    private bool editMode;
+
+    [Space(20)]
+    [SerializeField]
+    public bool SnapshotIsActiveAtTimeStamp;
+    [SerializeField]
+    public Sprite SnapshotSprite;
+    [SerializeField]
+    public Vector3 SnapshotPosition;
+
+    [ExecuteInEditMode]
     private void OnValidate()
     {
+        if (editMode)
+        {
+            visuals.sprite = SnapshotSprite;
+            SnapshotPosition = this.transform.position;
+        }
+        else
+        {
+            currentPointInTime = pointsInTime[0];
+            currentPointInTime.snapshotData.isActiveAtTimeStamp = pointsInTime[0].snapshotData.isActiveAtTimeStamp;
+            visuals.sprite = pointsInTime[0].snapshotData.sprite;
+            oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 0);
+            visuals.color = new Color(visuals.color.r, visuals.color.g, visuals.color.b, 1);
+            transform.position = pointsInTime[0].snapshotData.goalPosition;
+        }
+
         if (pointsInTime.Count > 0)
         {
             pointsInTime = pointsInTime.OrderBy(point => point.timeStamp).ToList();
@@ -30,13 +59,13 @@ public class TimeObject : MonoBehaviour
 
         foreach (var point in pointsInTime)
         {
-            if (point.goalPosition == Vector3.zero)
+            if (point.snapshotData.goalPosition == Vector3.zero)
             {
-                point.goalPosition = transform.position;
+                point.snapshotData.goalPosition = transform.position;
             }
-            if (point.isActiveAtTimeStamp && !point.sprite)
+            if (point.snapshotData.isActiveAtTimeStamp && !point.snapshotData.sprite)
             {
-                point.sprite = visuals.sprite;
+                point.snapshotData.sprite = visuals.sprite;
             }
         }
 
@@ -49,10 +78,10 @@ public class TimeObject : MonoBehaviour
     public void UpdateTimeObject()
     {
         LeanTween.cancel(gameObject);
-        if (currentPointInTime.isActiveAtTimeStamp)
+        if (currentPointInTime.snapshotData.isActiveAtTimeStamp)
         {
             oldVisuals.sprite = visuals.sprite;
-            visuals.sprite = currentPointInTime.sprite;
+            visuals.sprite = currentPointInTime.snapshotData.sprite;
 
             oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 1);
             LeanTween.alpha(oldVisuals.gameObject, 0, .2f);
@@ -65,16 +94,6 @@ public class TimeObject : MonoBehaviour
             LeanTween.alpha(visuals.gameObject, 0, .2f);
         }
 
-        LeanTween.move(gameObject, currentPointInTime.goalPosition, .5f);
-    }
-
-    public void Activate()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Deactivate()
-    {
-        gameObject.SetActive(false);
+        LeanTween.move(gameObject, currentPointInTime.snapshotData.goalPosition, .5f);
     }
 }
