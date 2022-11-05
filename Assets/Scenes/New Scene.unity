@@ -451,12 +451,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: bbf32a8145c736541b80a0b8abd842a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9da59e7f2dc34d7428e23590d131befa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 13.8, y: 8.05}
+  m_Size: {x: 6.94, y: 12.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -577,21 +577,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &692182485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60aa03dc43c7e7941ab7d798b5d5f05a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActiveAtTimeStamp: 1
-  sprite: {fileID: 21300000, guid: 9da59e7f2dc34d7428e23590d131befa, type: 3}
-  goalPosition: {x: -0.93, y: 1, z: 0}
 --- !u!1 &712384527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,21 +1313,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1654179968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60aa03dc43c7e7941ab7d798b5d5f05a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActiveAtTimeStamp: 1
-  sprite: {fileID: 21300000, guid: bbf32a8145c736541b80a0b8abd842a1, type: 3}
-  goalPosition: {x: 6.81, y: 1, z: 0}
 --- !u!1 &1850994538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850994538}
   m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
-  m_LocalPosition: {x: 6.81, y: 1, z: 0}
+  m_LocalPosition: {x: -2.89, y: 1.44, z: -2.04}
   m_LocalScale: {x: 0.50503, y: 0.50503, z: 0.50503}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1391,20 +1361,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsInTime:
   - timeStamp: 0
-    snapshotData: {fileID: 1654179968}
-  - timeStamp: 0.5
-    snapshotData: {fileID: 692182485}
-  - timeStamp: 0.8
-    snapshotData: {fileID: 1944944190}
+    snapshotData: {fileID: 11400000, guid: db952f2c2b1466e4cb36faaf10e5d863, type: 2}
   currentPointInTime:
     timeStamp: 0
-    snapshotData: {fileID: 1654179968}
+    snapshotData: {fileID: 0}
   visuals: {fileID: 582698724}
   oldVisuals: {fileID: 901560904}
-  editMode: 0
-  SnapshotIsActiveAtTimeStamp: 0
-  SnapshotSprite: {fileID: 21300000, guid: d38bada7417611e44a9fe42cebd14d58, type: 3}
-  SnapshotPosition: {x: -7.5, y: 1, z: 2.44}
+  editMode: 1
+  snapshotTime: 0.3
+  SnapshotIsActiveAtTimeStamp: 1
+  SnapshotSprite: {fileID: 21300000, guid: 9da59e7f2dc34d7428e23590d131befa, type: 3}
+  SnapshotPosition: {x: -2.89, y: 1.44, z: -2.04}
 --- !u!1 &1928198565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,21 +1470,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928198565}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1944944190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60aa03dc43c7e7941ab7d798b5d5f05a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActiveAtTimeStamp: 1
-  sprite: {fileID: 21300000, guid: d38bada7417611e44a9fe42cebd14d58, type: 3}
-  goalPosition: {x: -7.5, y: 1, z: 2.44}
 --- !u!1 &2011953983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,7 +1655,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

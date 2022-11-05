@@ -7,8 +7,7 @@ namespace TESF
 {
     public class TimeLineManager : MonoBehaviour
     {
-        [SerializeField]
-        private Slider timeSlider;
+        public Slider timeSlider;
 
         private List<TimeObject> _timeObjects = new List<TimeObject>();
 

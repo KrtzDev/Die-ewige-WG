@@ -25,9 +25,21 @@ public class TimeObjectEditor : Editor
             newSnapShotData.isActiveAtTimeStamp = true;
             newSnapShotData.sprite = thisTimeObject.SnapshotSprite;
             newSnapShotData.goalPosition = thisTimeObject.transform.position;
-            PointInTime newPointInTime = new PointInTime(0,newSnapShotData);
+
+            float currentTimeStamp = FindObjectOfType<TESF.TimeLineManager>().timeSlider.value;
+
+            string path = AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObjects/Snapshot " + thisTimeObject.gameObject.name + " " + currentTimeStamp + ".asset");
+            AssetDatabase.CreateAsset(newSnapShotData, path);
+
+            PointInTime newPointInTime = new PointInTime(currentTimeStamp, newSnapShotData);
+
 
             thisTimeObject.pointsInTime.Add(newPointInTime);
         }
+    }
+
+    private void OnSceneGUI()
+    {
+        thisTimeObject.SnapshotPosition = thisTimeObject.transform.position;
     }
 }

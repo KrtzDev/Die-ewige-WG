@@ -22,9 +22,12 @@ public class TimeObject : MonoBehaviour
 
     [Space(20)]
     [SerializeField]
+    private float snapshotTime;
+    [SerializeField]
     public bool SnapshotIsActiveAtTimeStamp;
     [SerializeField]
     public Sprite SnapshotSprite;
+    [Space(20)]
     [SerializeField]
     public Vector3 SnapshotPosition;
 
@@ -33,10 +36,11 @@ public class TimeObject : MonoBehaviour
     {
         if (editMode)
         {
+            FindObjectOfType<TESF.TimeLineManager>().timeSlider.value = snapshotTime;
             visuals.sprite = SnapshotSprite;
             SnapshotPosition = this.transform.position;
         }
-        else
+        else if(pointsInTime.Count > 0)
         {
             currentPointInTime = pointsInTime[0];
             currentPointInTime.snapshotData.isActiveAtTimeStamp = pointsInTime[0].snapshotData.isActiveAtTimeStamp;
@@ -44,6 +48,7 @@ public class TimeObject : MonoBehaviour
             oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 0);
             visuals.color = new Color(visuals.color.r, visuals.color.g, visuals.color.b, 1);
             transform.position = pointsInTime[0].snapshotData.goalPosition;
+            FindObjectOfType<TESF.TimeLineManager>().timeSlider.value = 0;
         }
 
         if (pointsInTime.Count > 0)
@@ -72,6 +77,7 @@ public class TimeObject : MonoBehaviour
         if (pointsInTime.Count > 0)
         {
             currentPointInTime = pointsInTime[0];
+            UpdateTimeObject();
         }
     }
 
