@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3856375602055717286}
   - component: {fileID: 3856375602055717281}
   - component: {fileID: 3856375602055717280}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 3856375602055717283}
   m_LocalRotation: {x: 0, y: -0.5, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: -0.286}
-  m_LocalScale: {x: 1, y: 1.36, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -60, z: 0}
 --- !u!33 &3856375602055717286
 MeshFilter:

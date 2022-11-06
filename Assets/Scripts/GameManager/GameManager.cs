@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
     [SerializeField]
     public Canvas titleMenu;
+    [SerializeField]
+    public Transform ghost;
     private void Awake() {
         if (Instance != null) {
             Destroy(gameObject);
@@ -60,12 +63,26 @@ public class GameManager : MonoBehaviour {
         Application.Quit();
     }
 
+    [SerializeField]
+    Vector3 ofs;
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             UpdateGameState(GameState.Paused);
         }
+        if (IsGameRunning()) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100)) {
+                ghost.position = hit.point + ofs;
+                //ghost.position = new Vector3(hit.point.x, hit.point.y + 0.5f, hit.point.z + 0.5f);
+            }
+        }
+
     }
+
+
+
 }
 
 public enum GameState {
