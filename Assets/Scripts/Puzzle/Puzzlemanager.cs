@@ -33,7 +33,7 @@ public class Puzzlemanager : MonoBehaviour
 
     public void GameWon()
     {
-        Debug.Log("Win");
+        GameManager.Instance.UpdateGameState(GameState.Won);
     }
 
 }
