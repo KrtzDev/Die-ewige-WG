@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60aa03dc43c7e7941ab7d798b5d5f05a, type: 3}
-  m_Name: Snapshot P_TimeObject_Herd 1895
+  m_Name: Snapshot P_TimeObject_Spuele 2018, 6
   m_EditorClassIdentifier: 
   isActiveAtTimeStamp: 1
-  sprite: {fileID: 21300000, guid: 0d70f256853dc194e9f83b2b41a27ba8, type: 3}
-  goalPosition: {x: -4.42, y: 1.1, z: 0.59}
+  sprite: {fileID: 21300000, guid: c4924434c136f7848a1b759ff7318f38, type: 3}
+  goalPosition: {x: 6.89, y: -1.66, z: 0.59}

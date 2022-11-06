@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60aa03dc43c7e7941ab7d798b5d5f05a, type: 3}
-  m_Name: Snapshot P_TimeObject_Rezept 1896
+  m_Name: Snapshot P_TimeObject_Kuehlschrank 2018, 6
   m_EditorClassIdentifier: 
-  isActiveAtTimeStamp: 0
-  sprite: {fileID: 0}
+  isActiveAtTimeStamp: 1
+  sprite: {fileID: 21300000, guid: 9ba638985ab1c4a41b0b634e2cfe2662, type: 3}
   goalPosition: {x: 6.89, y: -1.66, z: 0.59}
