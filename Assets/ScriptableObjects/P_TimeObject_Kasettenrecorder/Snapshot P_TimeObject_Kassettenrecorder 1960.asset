@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60aa03dc43c7e7941ab7d798b5d5f05a, type: 3}
   m_Name: Snapshot P_TimeObject_Kassettenrecorder 1960
   m_EditorClassIdentifier: 
-  isActiveAtTimeStamp: 1
+  isActiveAtTimeStamp: 0
   sprite: {fileID: 21300000, guid: 8bb52cde1dd7ec9439e8a81601e392a5, type: 3}
   goalPosition: {x: -0.37, y: 0, z: 0.59}
