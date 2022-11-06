@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,6 +13,8 @@ public class PuzzleObject : MonoBehaviour
     private bool _isActive;
     private bool didHitInventorySlot = false;
     private InventorySlot _inventorySlot;
+    
+    [SerializeField] private GameObject targetObject;
 
     private void Awake()
     {
@@ -25,7 +28,6 @@ public class PuzzleObject : MonoBehaviour
         _isActive = _timeObject.currentPointInTime.snapshotData.isActiveAtTimeStamp;
         _sprite = _timeObject.currentPointInTime.snapshotData.sprite;
     }
-
     private void OnMouseUp()
     {
         if (_isActive)
@@ -42,6 +44,18 @@ public class PuzzleObject : MonoBehaviour
                     AddToInventory(slot);
                 }
             }
+            Vector3 screenPosition = Input.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                //todo: item can only be hit if active
+                if (hit.transform.gameObject == targetObject)
+                {
+                    Debug.Log("Puzzle Solved");
+                }
+            }
+            
             if (!didHitInventorySlot)
             {
                 RemoveFromInventory();
