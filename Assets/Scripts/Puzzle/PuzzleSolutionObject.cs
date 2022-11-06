@@ -32,11 +32,8 @@ public class PuzzleSolutionObject : MonoBehaviour
 
     public void Completed()
     {
-        //TimeObject clone = Instantiate(_timeObject);
-        //_timeObject.Deactivate();
-        //clone.visuals.sprite = completedSprite;
-        //clone.shouldUpdateVisuals = false;
         _timeObject.visuals.sprite = completedSprite;
         _timeObject.shouldUpdateVisuals = false;
+        Puzzlemanager.Instance.PuzzleSolved();
     }
 }
