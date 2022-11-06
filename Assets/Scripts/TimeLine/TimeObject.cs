@@ -10,9 +10,11 @@ public class TimeObject : MonoBehaviour
 
     [Header("References")]
     [SerializeField]
-    private SpriteRenderer visuals;
+    public SpriteRenderer visuals;
     [SerializeField]
     private SpriteRenderer oldVisuals;
+
+    public bool shouldUpdateVisuals;
 
     [Header("------------------------------------------------------------------------------------------")]
     public PointInTime currentPointInTime;
@@ -100,9 +102,12 @@ public class TimeObject : MonoBehaviour
 
         LeanTween.cancel(gameObject);
         if (currentPointInTime.snapshotData.isActiveAtTimeStamp)
-        {          
-            oldVisuals.sprite = visuals.sprite;
-            visuals.sprite = currentPointInTime.snapshotData.sprite;
+        {
+            if (shouldUpdateVisuals)
+            {
+                oldVisuals.sprite = visuals.sprite;
+                visuals.sprite = currentPointInTime.snapshotData.sprite;
+            }
 
             if (visuals.color.a != 0)
             {

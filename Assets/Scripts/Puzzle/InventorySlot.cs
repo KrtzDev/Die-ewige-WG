@@ -47,6 +47,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
                 _image.transform.position = _startPosition;
                 _image.color = new Color(1,1,1,0);
                 puzzleObject.RemoveFromInventory();
+                puzzleObject.CheckForSolutionObject();
             }
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,13 +6,12 @@ public class PuzzleObject : MonoBehaviour
 {
     private TimeObject _timeObject;
 
-    private Sprite _sprite;
     private Transform _startParentTransform;
 
     private bool _isActive;
     private bool didHitInventorySlot = false;
     private InventorySlot _inventorySlot;
-    
+
     [SerializeField] private GameObject targetObject;
 
     private void Awake()
@@ -26,7 +24,6 @@ public class PuzzleObject : MonoBehaviour
     private void OnTimeObjectUpdated()
     {
         _isActive = _timeObject.currentPointInTime.snapshotData.isActiveAtTimeStamp;
-        _sprite = _timeObject.currentPointInTime.snapshotData.sprite;
     }
     private void OnMouseUp()
     {
@@ -35,7 +32,7 @@ public class PuzzleObject : MonoBehaviour
             PointerEventData eventData = new PointerEventData(EventSystem.current);
             eventData.position = Input.mousePosition;
             List<RaycastResult> raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData,raycastResults);
+            EventSystem.current.RaycastAll(eventData, raycastResults);
 
             foreach (var raycastResult in raycastResults)
             {
@@ -44,22 +41,30 @@ public class PuzzleObject : MonoBehaviour
                     AddToInventory(slot);
                 }
             }
-            Vector3 screenPosition = Input.mousePosition;
-            Ray ray = Camera.main.ScreenPointToRay(screenPosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                //todo: item can only be hit if active
-                if (hit.transform.gameObject == targetObject)
-                {
-                    Debug.Log("Puzzle Solved");
-                }
-            }
-            
+
+
             if (!didHitInventorySlot)
             {
                 RemoveFromInventory();
                 _inventorySlot = null;
+            }
+        }
+    }
+
+    public void CheckForSolutionObject()
+    {
+        Debug.Log("ping");
+
+        Vector3 screenPosition = Input.mousePosition;
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+        RaycastHit2D[] hit2D = Physics2D.GetRayIntersectionAll(ray,100f);
+        Debug.DrawRay(ray.origin,ray.direction * 100f,Color.red,10f);
+        foreach (var hit in hit2D)
+        {
+            if (hit.collider.gameObject == targetObject)
+            {
+                _timeObject.Deactivate();
+                targetObject.GetComponent<PuzzleSolutionObject>().Completed();
             }
         }
     }

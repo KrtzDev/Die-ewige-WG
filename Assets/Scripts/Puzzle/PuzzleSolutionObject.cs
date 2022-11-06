@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class PuzzleSolutionObject : MonoBehaviour
 {
+    [SerializeField]
+    private Sprite completedSprite;
+
     private TimeObject _timeObject;
 
-    private Sprite _sprite;
     private Transform _startParentTransform;
 
     private bool _isActive;
-    private BoxCollider _collider;
+    private BoxCollider2D _collider;
     
     private void Awake()
     {
@@ -19,14 +21,22 @@ public class PuzzleSolutionObject : MonoBehaviour
         _timeObject = GetComponent<TimeObject>();
         _timeObject.TimeObjectUpdate.AddListener(OnTimeObjectUpdated);
 
-        _collider = GetComponent<BoxCollider>();
+        _collider = GetComponent<BoxCollider2D>();
     }
 
     private void OnTimeObjectUpdated()
     {
         _isActive = _timeObject.currentPointInTime.snapshotData.isActiveAtTimeStamp;
-        _sprite = _timeObject.currentPointInTime.snapshotData.sprite;
-
         _collider.enabled = _isActive;
+    }
+
+    public void Completed()
+    {
+        //TimeObject clone = Instantiate(_timeObject);
+        //_timeObject.Deactivate();
+        //clone.visuals.sprite = completedSprite;
+        //clone.shouldUpdateVisuals = false;
+        _timeObject.visuals.sprite = completedSprite;
+        _timeObject.shouldUpdateVisuals = false;
     }
 }
