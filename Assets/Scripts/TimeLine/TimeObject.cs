@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TimeObject : MonoBehaviour
 {
+    [HideInInspector]
+    public UnityEvent TimeObjectUpdate;
+
     [Header("References")]
     [SerializeField]
     private SpriteRenderer visuals;
@@ -19,9 +23,10 @@ public class TimeObject : MonoBehaviour
     [Header("------------------------------------------------------------------------------------------")]
     [Header("SnapshotData")]
     [SerializeField]
-    private bool editMode;
+    public bool editMode;
 
     [Space(20)]
+    [Range(1895, 2018)]
     [SerializeField]
     private float snapshotTime;
     [SerializeField]
@@ -40,7 +45,7 @@ public class TimeObject : MonoBehaviour
             visuals.sprite = SnapshotSprite;
             SnapshotPosition = this.transform.position;
         }
-        else if(pointsInTime.Count > 0)
+        else if (pointsInTime.Count > 0)
         {
             currentPointInTime = pointsInTime[0];
             currentPointInTime.snapshotData.isActiveAtTimeStamp = pointsInTime[0].snapshotData.isActiveAtTimeStamp;
@@ -48,7 +53,7 @@ public class TimeObject : MonoBehaviour
             oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 0);
             visuals.color = new Color(visuals.color.r, visuals.color.g, visuals.color.b, 1);
             transform.position = pointsInTime[0].snapshotData.goalPosition;
-            FindObjectOfType<TESF.TimeLineManager>().timeSlider.value = 0;
+            FindObjectOfType<TESF.TimeLineManager>().timeSlider.value = 1895f;
         }
 
         if (pointsInTime.Count > 0)
@@ -59,8 +64,16 @@ public class TimeObject : MonoBehaviour
 
     private void Awake()
     {
-        LeanTween.alpha(oldVisuals.gameObject, 0, 0);
-        LeanTween.alpha(visuals.gameObject, 1, 0);
+        if (pointsInTime.Count > 0 && pointsInTime[0].snapshotData.isActiveAtTimeStamp)
+        {
+            oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 0);
+            visuals.color = new Color(visuals.color.r, visuals.color.g, visuals.color.b, 1);
+        }
+        else
+        {
+            oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 0);
+            visuals.color = new Color(visuals.color.r, visuals.color.g, visuals.color.b, 0);
+        }
 
         foreach (var point in pointsInTime)
         {
@@ -83,13 +96,18 @@ public class TimeObject : MonoBehaviour
 
     public void UpdateTimeObject()
     {
+        TimeObjectUpdate.Invoke();
+
         LeanTween.cancel(gameObject);
         if (currentPointInTime.snapshotData.isActiveAtTimeStamp)
-        {
+        {          
             oldVisuals.sprite = visuals.sprite;
             visuals.sprite = currentPointInTime.snapshotData.sprite;
 
-            oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 1);
+            if (visuals.color.a != 0)
+            {
+                oldVisuals.color = new Color(oldVisuals.color.r, oldVisuals.color.g, oldVisuals.color.b, 1);
+            }
             LeanTween.alpha(oldVisuals.gameObject, 0, .2f);
 
             visuals.color = new Color(visuals.color.r, visuals.color.g, visuals.color.b, 0);
@@ -98,8 +116,23 @@ public class TimeObject : MonoBehaviour
         else
         {
             LeanTween.alpha(visuals.gameObject, 0, .2f);
+            LeanTween.alpha(oldVisuals.gameObject, 0, .2f);
         }
 
         LeanTween.move(gameObject, currentPointInTime.snapshotData.goalPosition, .5f);
+    }
+
+    public void Deactivate()
+    {
+        enabled = false;
+        visuals.enabled = false;
+        oldVisuals.enabled = false;
+    }
+
+    public void Activate()
+    {
+        enabled = true;
+        visuals.enabled = true;
+        oldVisuals.enabled = true;
     }
 }
