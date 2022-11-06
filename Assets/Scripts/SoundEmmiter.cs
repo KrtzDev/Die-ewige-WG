@@ -13,11 +13,16 @@ public class SoundEmmiter : MonoBehaviour
     {
         if (_audioSource)
         {
-            _audioSource.clip = _clip;
+            _audioSource.clip = audioClip;
             if (_audioSource.clip)
             {
-                _audioSource.Play();
+                StartCoroutine(PlaySoundAfterSpawn());
             }
         }
+    }
+    IEnumerator PlaySoundAfterSpawn()
+    {
+        yield return null;
+        _audioSource.Play();
     }
 }

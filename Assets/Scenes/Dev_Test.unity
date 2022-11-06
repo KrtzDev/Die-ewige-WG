@@ -2078,8 +2078,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completedSprite: {fileID: 21300000, guid: efb31a0b5b4cd204192dc2942cebe254, type: 3}
-  completedClip: {fileID: 0}
-  _soundEmmiterPrefab: {fileID: 0}
+  completedClip: {fileID: 8300000, guid: 03d4dcd186397554da6afc5b1e567241, type: 3}
+  _soundEmmiterPrefab: {fileID: 2987907799084781521, guid: 0f75ea08b5b6d624e904e298af94a228,
+    type: 3}
 --- !u!61 &954583256
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2798,9 +2799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bbeb2203bf9a84e802dcfe3b169218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completedSprite: {fileID: 0}
-  completedClip: {fileID: 0}
-  _soundEmmiterPrefab: {fileID: 0}
+  completedSprite: {fileID: 21300000, guid: efb31a0b5b4cd204192dc2942cebe254, type: 3}
+  completedClip: {fileID: 8300000, guid: 03d4dcd186397554da6afc5b1e567241, type: 3}
+  _soundEmmiterPrefab: {fileID: 2987907799084781521, guid: 0f75ea08b5b6d624e904e298af94a228,
+    type: 3}
 --- !u!61 &1172989096
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3108,6 +3110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1347687821}
+  - component: {fileID: 1347687822}
   m_Layer: 0
   m_Name: PuzzleManager
   m_TagString: Untagged
@@ -3131,6 +3134,19 @@ Transform:
   m_Father: {fileID: 1358044478}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1347687822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347687820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d439f2ac4c6daa4888062f1ef33a931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solvedPuzzlesToWin: 3
 --- !u!1 &1351357788
 GameObject:
   m_ObjectHideFlags: 0
@@ -3988,8 +4004,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completedSprite: {fileID: 21300000, guid: 137b3734674f03f4faae8ded112fcdca, type: 3}
-  completedClip: {fileID: 0}
-  _soundEmmiterPrefab: {fileID: 0}
+  completedClip: {fileID: 8300000, guid: ffa3a336bb91c1a49ab69321ec4b0476, type: 3}
+  _soundEmmiterPrefab: {fileID: 2987907799084781521, guid: 0f75ea08b5b6d624e904e298af94a228,
+    type: 3}
 --- !u!61 &1591225885
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4438,9 +4455,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bbeb2203bf9a84e802dcfe3b169218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completedSprite: {fileID: 0}
-  completedClip: {fileID: 0}
-  _soundEmmiterPrefab: {fileID: 0}
+  completedSprite: {fileID: 21300000, guid: e2c992b3ddcbc0c478457c8dec10376d, type: 3}
+  completedClip: {fileID: 8300000, guid: ffa3a336bb91c1a49ab69321ec4b0476, type: 3}
+  _soundEmmiterPrefab: {fileID: 2987907799084781521, guid: 0f75ea08b5b6d624e904e298af94a228,
+    type: 3}
 --- !u!61 &1802538854
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5867,7 +5885,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2077291617}
   m_Direction: 0
   m_MinValue: 1880
-  m_MaxValue: 2020
+  m_MaxValue: 2030
   m_WholeNumbers: 0
   m_Value: 1895
   m_OnValueChanged:

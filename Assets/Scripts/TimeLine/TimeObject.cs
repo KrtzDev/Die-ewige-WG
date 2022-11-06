@@ -103,7 +103,7 @@ public class TimeObject : MonoBehaviour
         LeanTween.cancel(gameObject);
         if (currentPointInTime.snapshotData.isActiveAtTimeStamp)
         {
-            if (shouldUpdateVisuals)
+            if (true)
             {
                 oldVisuals.sprite = visuals.sprite;
                 visuals.sprite = currentPointInTime.snapshotData.sprite;
