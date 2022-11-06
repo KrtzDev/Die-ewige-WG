@@ -200,7 +200,7 @@ Transform:
   - {fileID: 7893959651173463441}
   - {fileID: 7893959651324201269}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7893959652048460830
 MonoBehaviour:
@@ -221,7 +221,7 @@ MonoBehaviour:
     snapshotData: {fileID: 0}
   pointsInTime: []
   editMode: 0
-  snapshotTime: 0
+  snapshotTime: 1985
   SnapshotIsActiveAtTimeStamp: 1
   SnapshotSprite: {fileID: 0}
   SnapshotPosition: {x: 0, y: 0, z: 0}
