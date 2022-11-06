@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActiveAtTimeStamp: 1
   sprite: {fileID: 21300000, guid: 73ebae953ef22144a9b787a130a82961, type: 3}
-  goalPosition: {x: 6.89, y: -1.66, z: 0.59}
+  goalPosition: {x: 3.48, y: -0.18, z: -0.98}
