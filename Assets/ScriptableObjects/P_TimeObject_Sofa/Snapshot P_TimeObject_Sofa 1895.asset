@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60aa03dc43c7e7941ab7d798b5d5f05a, type: 3}
   m_Name: Snapshot P_TimeObject_Sofa 1895
   m_EditorClassIdentifier: 
-  isActiveAtTimeStamp: 0
-  sprite: {fileID: 0}
-  goalPosition: {x: 6.89, y: -1.66, z: 0.59}
+  isActiveAtTimeStamp: 1
+  sprite: {fileID: 21300000, guid: eed2fd694fba56045ac8c4ba644fcfa3, type: 3}
+  goalPosition: {x: 5.32, y: -1.66, z: 1.71}
