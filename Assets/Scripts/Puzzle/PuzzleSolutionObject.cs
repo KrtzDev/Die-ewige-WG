@@ -7,6 +7,11 @@ public class PuzzleSolutionObject : MonoBehaviour
 {
     [SerializeField]
     private Sprite completedSprite;
+    [SerializeField]
+    private AudioClip completedClip;
+
+    [SerializeField]
+    private SoundEmmiter _soundEmmiterPrefab;
 
     private TimeObject _timeObject;
 
@@ -34,6 +39,8 @@ public class PuzzleSolutionObject : MonoBehaviour
     {
         _timeObject.visuals.sprite = completedSprite;
         _timeObject.shouldUpdateVisuals = false;
+        SoundEmmiter newSoundEmmiter = Instantiate(_soundEmmiterPrefab);
+        _soundEmmiterPrefab.PlayAudio(completedClip);
         Puzzlemanager.Instance.PuzzleSolved();
     }
 }
